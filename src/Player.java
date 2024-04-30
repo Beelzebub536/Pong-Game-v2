@@ -4,8 +4,8 @@ public class Player {
     public static final int PADDLE_WIDTH = 10;
     public static final int PADDLE_HEIGHT = 80;
     private int paddleY;
-    private final int PADDLE_SPEED = 10;
     private int score = 0;
+    private final int PADDLE_SPEED = 10;
 
 
     public Player(int paddleY) {
@@ -22,10 +22,6 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public void setPaddleY(int paddleY) {
-        this.paddleY = paddleY;
     }
 
     public void movePaddle1() {

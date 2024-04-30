@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class CheckCollision {
-    public void checkCollision(Player player1, Player player2, Ball circle){
+    public void checkCollision(Player player1, Player player2, Ball circle) throws InterruptedException {
         Rectangle paddle1 = new Rectangle(0,player1.getPaddleY(), Player.PADDLE_WIDTH, Player.PADDLE_HEIGHT);
         Rectangle paddle2 = new Rectangle(GamePanel.WIDTH - Player.PADDLE_WIDTH, player2.getPaddleY(), Player.PADDLE_WIDTH, Player.PADDLE_HEIGHT);
         Rectangle ball = new Rectangle(circle.getBallX(), circle.getBallY(), Ball.BALL_SIZE, Ball.BALL_SIZE);
@@ -15,6 +15,7 @@ public class CheckCollision {
             else
                 player1.setScore(10+player1.getScore());
             circle.resetBall();
+            Thread.sleep(1000);
         }
     }
 }

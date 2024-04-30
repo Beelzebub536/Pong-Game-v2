@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener{
     static final int WIDTH = 800;
@@ -11,7 +12,7 @@ public class GamePanel extends JPanel implements ActionListener{
 
     private final Player player1 = new Player(CEILING + (HEIGHT - CEILING) / 2 - Player.PADDLE_HEIGHT / 2);
     private final Player player2 = new Player(CEILING + (HEIGHT - CEILING) / 2 - Player.PADDLE_HEIGHT / 2);
-    private final Ball ball = new Ball(WIDTH/2,HEIGHT/2);
+    private final Ball ball = new Ball();
     CheckCollision cK = new CheckCollision();
     private final JLabel scoreBoard;
 
@@ -41,7 +42,11 @@ public class GamePanel extends JPanel implements ActionListener{
         scoreBoard.setText("Player 1: " + player1.getScore() + " | Player 2: " + player2.getScore());
     }
     public void actionPerformed(ActionEvent e) {
-        cK.checkCollision(player1,player2,ball);
+        try {
+            cK.checkCollision(player1,player2,ball);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
         player2.movePaddle2();
         player1.movePaddle1();
         ball.moveBall();

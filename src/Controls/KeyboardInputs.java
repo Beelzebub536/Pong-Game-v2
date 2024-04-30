@@ -11,37 +11,21 @@ public class KeyboardInputs implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_W:
-                wPress = true;
-                break;
-            case KeyEvent.VK_S:
-                sPress = true;
-                break;
-            case KeyEvent.VK_UP:
-                upPressed = true;
-                break;
-            case KeyEvent.VK_DOWN:
-                downPressed = true;
-                break;
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W -> wPress = true;
+            case KeyEvent.VK_S -> sPress = true;
+            case KeyEvent.VK_UP -> upPressed = true;
+            case KeyEvent.VK_DOWN -> downPressed = true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_W:
-                wPress = false;
-                break;
-            case KeyEvent.VK_S:
-                sPress = false;
-                break;
-            case KeyEvent.VK_UP:
-                upPressed = false;
-                break;
-            case KeyEvent.VK_DOWN:
-                downPressed = false;
-                break;
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_W -> wPress = false;
+            case KeyEvent.VK_S -> sPress = false;
+            case KeyEvent.VK_UP -> upPressed = false;
+            case KeyEvent.VK_DOWN -> downPressed = false;
         }
     }
 
