@@ -5,7 +5,8 @@ public class Player {
     public static final int PADDLE_HEIGHT = 80;
     private int paddleY;
     private int score = 0;
-    private final int PADDLE_SPEED = 10;
+    static final int SPEED = 2;
+    static int PADDLE_SPEED = SPEED;
 
 
     public Player(int paddleY) {

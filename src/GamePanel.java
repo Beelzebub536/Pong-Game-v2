@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener{
     static final int WIDTH = 800;
@@ -15,6 +14,7 @@ public class GamePanel extends JPanel implements ActionListener{
     private final Ball ball = new Ball();
     CheckCollision cK = new CheckCollision();
     private final JLabel scoreBoard;
+    private int frame = 0;
 
     public GamePanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -26,8 +26,13 @@ public class GamePanel extends JPanel implements ActionListener{
         scoreBoard.setFont(new Font("Arial", Font.PLAIN, 18));
         add(scoreBoard, BorderLayout.NORTH);
 
-        Timer timer = new Timer(1000 / 60, this);
+        Timer timer = new Timer(1000 / 240, this);
         timer.start();
+        Timer timer2 = new Timer(1000, e -> {
+            System.out.println("FPS = "+frame);
+            frame = 0;
+        });
+        timer2.start();
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -47,10 +52,8 @@ public class GamePanel extends JPanel implements ActionListener{
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
-        player2.movePaddle2();
-        player1.movePaddle1();
-        ball.moveBall();
         updateScoreLabel();
+        frame++;
         repaint();
     }
 
