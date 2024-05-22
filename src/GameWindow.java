@@ -3,7 +3,8 @@ import javax.swing.*;
 public class GameWindow {
     public static JFrame frame = new JFrame();
     private static GameState currentState;
-    private static GamePanel gamePanel = new GamePanel();
+    private static final GamePanel gamePanel = new GamePanel();
+    private static final PongTitleScreen title = new PongTitleScreen();
 
     public GameWindow() {
         frame.setTitle("Pong Game");
@@ -20,17 +21,16 @@ public class GameWindow {
         frame.getContentPane().removeAll();
 
         switch (state) {
-            case TITLE:
-                frame.add(new PongTitleScreen());
-                if (currentState != GameState.GAME) {
-                    GamePanel.stop();
-                }
-                break;
-            case GAME:
+            case TITLE -> {
+                frame.add(title);
+                title.requestFocusInWindow();
+                GamePanel.stop();
+            }
+            case GAME -> {
                 frame.add(gamePanel);
                 GamePanel.start();
                 gamePanel.requestFocusInWindow();
-                break;
+            }
         }
         frame.repaint();
         frame.pack();
