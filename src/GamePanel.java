@@ -1,4 +1,3 @@
-import Controls.KeyboardInputs;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,25 +13,41 @@ public class GamePanel extends JPanel implements ActionListener{
     private final Ball ball = new Ball();
     CheckCollision cK = new CheckCollision();
     private final JLabel scoreBoard;
+    private static Timer timer,timer2;
     private int frame = 0;
+
 
     public GamePanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
-        setFocusable(true);
         addKeyListener(new KeyboardInputs());
+        setFocusable(true);
+
         scoreBoard = new JLabel("Player 1: " + player1.getScore() + " | Player 2: " + player2.getScore());
         scoreBoard.setForeground(Color.WHITE);
         scoreBoard.setFont(new Font("Arial", Font.PLAIN, 18));
         add(scoreBoard, BorderLayout.NORTH);
 
-        Timer timer = new Timer(1000 / 240, this);
-        timer.start();
-        Timer timer2 = new Timer(1000, e -> {
+        timer = new Timer(1000 / 240, this);
+
+        timer2 = new Timer(1000, e -> {
             System.out.println("FPS = "+frame);
             frame = 0;
         });
+        timer.start();
         timer2.start();
+    }
+    public static void stop() {
+        if (timer2.isRunning() && timer.isRunning()) {
+            timer.stop();
+            timer2.stop();
+        }
+    }
+    public static void start() {
+        if (!(timer2.isRunning() && timer.isRunning())) {
+            timer.start();
+            timer2.start();
+        }
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

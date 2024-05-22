@@ -1,5 +1,3 @@
-import Controls.KeyboardInputs;
-
 public class Player {
     public static final int PADDLE_WIDTH = 10;
     public static final int PADDLE_HEIGHT = 80;
@@ -26,16 +24,15 @@ public class Player {
     }
 
     public void movePaddle1() {
-
         if (KeyboardInputs.wPress && paddleY > GamePanel.CEILING) {
             paddleY -= PADDLE_SPEED;
         }
-
         if (KeyboardInputs.sPress && paddleY < GamePanel.HEIGHT - PADDLE_HEIGHT) {
             paddleY += PADDLE_SPEED;
         }
     }
-    public void movePaddle2(){
+
+    public void movePaddle2() {
         if (KeyboardInputs.upPressed && paddleY > GamePanel.CEILING) {
             paddleY -= PADDLE_SPEED;
         }
@@ -43,6 +40,4 @@ public class Player {
             paddleY += PADDLE_SPEED;
         }
     }
-
-
 }
