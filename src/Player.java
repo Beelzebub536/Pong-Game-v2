@@ -23,6 +23,14 @@ public class Player {
         this.score = score;
     }
 
+    public void resetPaddle(){
+        paddleY =  GamePanel.CEILING + (GamePanel.HEIGHT - GamePanel.CEILING) / 2 - Player.PADDLE_HEIGHT / 2;
+        PADDLE_SPEED = SPEED;
+    }
+    public void resetScore(){
+        score = 0;
+    }
+
     public void movePaddle1() {
         if (KeyboardInputs.wPress && paddleY > GamePanel.CEILING) {
             paddleY -= PADDLE_SPEED;

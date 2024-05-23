@@ -3,8 +3,9 @@ import javax.swing.*;
 public class GameWindow {
     public static JFrame frame = new JFrame();
     private static GameState currentState;
-    private static final GamePanel gamePanel = new GamePanel();
+    public static final GamePanel gamePanel = new GamePanel();
     private static final PongTitleScreen title = new PongTitleScreen();
+    private static final PauseScreen pause = new PauseScreen();
 
     public GameWindow() {
         frame.setTitle("Pong Game");
@@ -24,20 +25,30 @@ public class GameWindow {
             case TITLE -> {
                 frame.add(title);
                 title.requestFocusInWindow();
-                GamePanel.stop();
+                GamePanel.timer.stop();
+                GamePanel.fpsTimer.stop();
             }
             case GAME -> {
                 frame.add(gamePanel);
-                GamePanel.start();
+                GamePanel.timer.start();
+                GamePanel.fpsTimer.start();
                 gamePanel.requestFocusInWindow();
+            }
+            case PAUSE -> {
+                frame.add(pause);
+                pause.requestFocusInWindow();
+                GamePanel.timer.stop();
             }
         }
         frame.repaint();
         frame.pack();
     }
 
-
     public static GameState getCurrentState() {
         return currentState;
+    }
+
+    public static void main(String[] args) {
+        new GameWindow();
     }
 }

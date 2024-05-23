@@ -10,7 +10,6 @@ public class PongTitleScreen extends JPanel {
         setPreferredSize(new Dimension(GamePanel.WIDTH, GamePanel.HEIGHT));
         setBackground(Color.BLACK);
         setLayout(null);
-        addKeyListener(new KeyboardInputs());
         setFocusable(true);
 
         JButton playButton = new JButton();

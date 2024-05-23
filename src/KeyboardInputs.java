@@ -11,11 +11,11 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             if (GameWindow.getCurrentState() == GameState.GAME)
-                GameWindow.setCurrentState(GameState.TITLE);
+                GameWindow.setCurrentState(GameState.PAUSE);
             else
                 GameWindow.setCurrentState(GameState.GAME);
         }
-        if(GameWindow.getCurrentState() == GameState.GAME) {
+        if (GameWindow.getCurrentState() == GameState.GAME) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_W -> wPress = true;
                 case KeyEvent.VK_S -> sPress = true;
@@ -38,7 +38,6 @@ public class KeyboardInputs implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {
+    }
 }
-
-

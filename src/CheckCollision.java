@@ -18,6 +18,8 @@ public class CheckCollision {
             else
                 player1.setScore(player1.getScore() + 10);
             circle.resetBall();
+            player1.resetPaddle();
+            player2.resetPaddle();
             Player.PADDLE_SPEED=Player.SPEED;
             Thread.sleep(1000);
         }

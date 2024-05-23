@@ -1,4 +1,5 @@
 public enum GameState {
     TITLE,
-    GAME
+    GAME,
+    PAUSE
 }
